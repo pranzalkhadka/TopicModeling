@@ -1,24 +1,25 @@
 import re
-from pyspark.sql.functions import split, udf
-from pyspark.sql.functions import split, monotonically_increasing_id, col, length
-from pyspark.sql import SparkSession
+from pyspark.sql.functions import split, udf, monotonically_increasing_id, col, length
+# from pyspark.sql.functions import split, monotonically_increasing_id, col, length
+# from pyspark.sql import SparkSession
 from pyspark.sql.types import StringType
 
 
 def clean_text(in_string):
-    # Remove email
     remove_email = re.sub('\S*@\S*\s?', '', in_string)
-    # Remove extra whitespaces
     remove_nl = re.sub('\s+', ' ', remove_email)
-    # Remove miscellaneous symbols
     remove_othr = re.sub("\'|\>|\:|\-", "", remove_nl)
     return remove_othr
 
 
 class DataTransformation:
 
-    def __init__(self, clean_func):
-        self.spark = SparkSession.builder.appName("DataTransformation").getOrCreate()
+    # def __init__(self, clean_func):
+    #     self.spark = SparkSession.builder.appName("DataTransformation").getOrCreate()
+    #     self.clean_udf = udf(clean_func, StringType())
+
+    def __init__(self, spark, clean_func):
+        self.spark = spark
         self.clean_udf = udf(clean_func, StringType())
 
 
