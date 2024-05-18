@@ -2,10 +2,6 @@ from pyspark.ml.feature import CountVectorizer, IDF
 from pyspark.ml.clustering import LDA
 
 
-# idf = IDF(inputCol="rawFeatures", outputCol="features")
-# lda = LDA(k=20, maxIter=50, optimizer="em")
-
-
 class ModelTrainer:
 
     def __init__(self, spark):
@@ -27,4 +23,3 @@ class ModelTrainer:
         lp = model.logPerplexity(corpus)
 
         return ll, lp
-

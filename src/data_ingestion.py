@@ -18,5 +18,6 @@ class DataIngestion:
         return ngout
 
 if __name__ == "__main__":
+    
     d = DataIngestion().import_data()
     print(len(d))
