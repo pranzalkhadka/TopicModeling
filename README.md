@@ -1,8 +1,8 @@
 # TopicModeling
-Topic modeling is an unsupervised Machine Learning technique to identify groups of similar words within a body of text. 
+This project is aimed to apply topic modeling which is an unsupervised Machine Learning technique to identify groups of similar words within a body of text. 
 
 # Datset
-The data set used is 20 newsgroups collection dataset from kaggle which is a become a popular datatset for text classification and text clustering. This data set is a collection of 20,000 messages, collected from 20 different netnews newsgroups. One thousand messages from each of the twenty newsgroups were chosen at random and partitioned by newsgroup group. Some of the collection of newsgroup are comp.graphics, sci.electronics, talk.politics.guns, sci.space and more.
+The data set used is 20 newsgroups collection dataset from kaggle which is a popular datatset for text classification and text clustering. This data set is a collection of 20,000 messages, collected from 20 different newsgroups. One thousand messages from each of the twenty newsgroups were chosen at random and partitioned by newsgroup. Some of the categories of newsgroup are comp.graphics, sci.electronics, talk.politics.guns, sci.space and more.
 
 
 # Techniques used

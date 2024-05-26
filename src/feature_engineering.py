@@ -1,7 +1,7 @@
 from pyspark.ml.feature import RegexTokenizer, StopWordsRemover
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 import nltk
-from pyspark.sql.functions import udf, col
+from pyspark.sql.functions import udf
 from pyspark.sql.types import ArrayType, StringType
 
 nltk.download('averaged_perceptron_tagger')
@@ -10,9 +10,9 @@ nltk.download('wordnet')
 porter = PorterStemmer()
 lemma = WordNetLemmatizer()
 
-spwordlist = ["article", "write", "entry", "date", "udel", "said", "tell", "think", "know", "just", "isnt", "line", "like", "does", "going", "make", "thanks", "also"]
 
 class FeatureEngineering:
+
 
     def __init__(self):
 
@@ -39,7 +39,5 @@ class FeatureEngineering:
             spremoved['id'],
             spremoved['stemmed_tokens'].alias('word')
         )
-        filtered_df = news_df.filter(col('title') == 'rec.autos')
-        first_row = filtered_df.select('word').first()
 
-        return news_df, first_row
+        return news_df

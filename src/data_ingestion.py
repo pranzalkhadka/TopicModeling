@@ -4,6 +4,7 @@ from sklearn.datasets import fetch_20newsgroups
 
 class DataIngestion:
 
+
     def import_data(self):
 
         newsgroup_train = fetch_20newsgroups(subset="train")
@@ -16,6 +17,7 @@ class DataIngestion:
         ngout = pd.merge(df, targets, left_on='target', right_index=True)
 
         return ngout
+
 
 if __name__ == "__main__":
     
