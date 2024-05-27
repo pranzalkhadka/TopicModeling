@@ -9,7 +9,7 @@ class ModelTrainer:
 
         self.spark = spark
         self.idf = IDF(inputCol="rawFeatures", outputCol="features")
-        self.lda = LDA(k=20, maxIter=50, optimizer="em")
+        self.lda = LDA(k=20, maxIter=100, optimizer="em")
 
 
     def model_training(self, news_df):
@@ -17,8 +17,6 @@ class ModelTrainer:
         cv = CountVectorizer(inputCol="word", outputCol="rawFeatures", vocabSize=10000, minDF=5)
         cvmodel = cv.fit(news_df)
         featurizedData = cvmodel.transform(news_df)
-        vocab = cvmodel.vocabulary
-        # vocab_broadcast = sc.broadcast(vocab)
         idfModel = self.idf.fit(featurizedData)
         rescaledData = idfModel.transform(featurizedData)
         corpus = rescaledData.select('id', 'features')
